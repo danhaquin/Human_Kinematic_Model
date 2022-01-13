@@ -1,0 +1,12 @@
+%The client is created IP address and port number established
+tcpipClient = tcpip('127.0.0.1', 1293, 'NetworkRole', 'Client');
+%Here the time between transmission confirmations is set to 3 seconds 
+to allow continued transmission and running of the program in the 
+case of brief disconnection
+set(tcpipClient,'Timeout',3);
+%this openned the UDP connection
+fopen(tcpipClient);
+%Here variable j was sent using UDP transmission
+fwrite(tcpipClient,j);
+%Finally, the UDP connection is closed
+fclose(tcpipClient);
